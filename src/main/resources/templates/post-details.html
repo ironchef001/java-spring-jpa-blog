@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:https="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -15,16 +15,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="jumbotron jumbotron-cover-image"
-                         style='background: #000 url("https://picsum.photos/id/1/800/400") center center; background-size: cover; padding: 8rem;'>
-                    </div>
+<!--                    <div class="jumbotron jumbotron-cover-image"-->
+<!--                         style='background: #000 url("https://picsum.photos/id/1/800/400") center center; background-size: cover; padding: 8rem;'>-->
+<!--                    </div>-->
+                        <div>
+                            <img th:src="'https://picsum.photos/id/'+${post.getId()}+'/800/400'">
+                        </div>
+<!--                    <div class="jumbotron jumbotron-cover-image" >-->
+<!--                        <img style='background: #000 center center; background-size: cover; padding: 8rem;' th:src="'https://picsum.photos/id/'+${post.getId()}+'/800/400'" alt="Post Title Image">-->
+<!--                    </div>-->
                 </div>
             </div>
 
             <div class="row py-3">
                 <div class="col-sm-12 post-heading">
                     <h1 class="post-title" th:text="${post.getTitle()}"></h1>
-                    <h3 class="post-subtitle">Category placeholder</h3>
+                    <h3 class="post-subtitle" th:text="${post.getCategory().getName()}"></h3>
                     <h3 class="post-subtitle" th:text="${post.getDateStr()}"></h3>
                     <h3 class="post-subtitle" th:text="${post.getAuthor()}"></h3>
                 </div>
@@ -36,7 +42,8 @@
                 <aside class="col-md-4 pl-5">
                     <div class="py-3 mb-3 bg-white rounded">
                         <div class="card-title">About the Author</div>
-                        <img class="card-img-top"  src="https://randomuser.me/api/portraits/lego/9.jpg" alt="${post.getAuthor()}">
+<!--                        <img class="card-img-top"  src="https://randomuser.me/api/portraits/lego/9.jpg" alt="${post.getAuthor()}">-->
+                        <img class="card-img-top"  th:src="'https://randomuser.me/api/portraits/lego/'+${post.getId()}+'.jpg'" alt="${post.getAuthor()}">
                         <div class="card-body py-4">
                             <p class="card-author-bio">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
                             <a href="#" class=""><div class="card-author-link">Read More</div></a>
